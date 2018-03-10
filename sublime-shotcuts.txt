@@ -1,0 +1,18 @@
+ Console:
+ ---------
+ To open the console, press Ctrl+` or select View → Show Console from the main menu.
+ e.g type "sublime.version()" (note no space in start..)
+
+ Sublime Text 3 comes with its own Python interpreter that’s separate from your system’s Python interpreter (if available).
+ The embedded interpreter is only intended to interact with the plugin API, not for general development
+
+
+Command Palette
+-------------------
+Windows	ctrl + shift + p
+
+ Just popup open the Command Palette and search for things like settings, options, syntax, and shortcuts. Most third-party packages that you'll install hook into this. One of the first things I do when I install a plugin is see what it added to the Command Palette. Some examples of things you can access are:
+Settings
+Changing Syntax
+Snippets from Plugins
+Actions from plugins (Git Commands, Block Comments, etc.)

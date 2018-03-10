@@ -1,0 +1,282 @@
+http://docs.sublimetext.info/en/latest/basic_concepts.html#the-data-directory
+
+
+
+The Data Directory
+
+==================
+Nearly all of the interesting files for users live under the data directory. The data directory is a platform-dependent location:
+
+Windows: %APPDATA%\Sublime Text 3
+OS X: ~/Library/Application Support/Sublime Text 3
+
+Linux: ~/.config/sublime-text-3
+If you’re using the portable version (Windows only), look for Application/Data. Here, Application refers to the directory to which you’ve extracted the compressed portable files and where the executable resides.
+
+
+***
+Note that the Data directory only exists with that name in the portable version. In full installations, it is one of the locations indicated above.
+
+
+
+
+The Packages Directory
+=======================
+This is a key directory located under the data directory. All resources for supported programming and markup languages are stored here.
+
+(More on packages and resources later.)
+
+You can access the packages directory from the main menu (Preferences → Browse Packages...), by means of an API call (sublime.packages_path()), and by other means that will be explained in later topics.
+
+In this guide, we refer to the packages folder as Packages, packages path, packages folder or packages directory.
+
+
+User Packages
+==========
+
+The User Package
+Packages/User is a catch-all directory for custom plugins, snippets, macros, etc. Consider it your personal area in the packages folder. Additionally, it will contain most of your personal application or plugin settings.
+
+Updates to Sublime Text will never overwrite the contents of Packages/User.
+
+
+
+
+Configurability of SublimeText
+====
+Sublime Text’s vast flexibility is the reason why you will learn about so many configuration files: there simply must be a place to specify all available preferences and settings.
+
+Configuration files in Sublime Text are text files that conform to a predefined structure or format: JSON predominates, but you’ll find XML files too. For the more advanced extensibility options, Python source code files are use
+
+Sublime Text will look for resources inside the packages folder. We’ll talk at length about packages later, but the short version is that, to keep things tidy, Sublime Text has a notion of a package, that is, a folder (or zip archive) that contains resources that belong together (maybe they help compose emails faster, write HTML efficiently, enhance the coding experience for C, Ruby, Go...).
+
+====
+
+
+Searching in Sublime
+==============
+
+Searching
+Keyboard shortcuts related to Find in Files:
+
+Open Find in Files	Ctrl + Shift + F
+Toggle regular expressions	Alt + R
+Toggle case sensitivity	Alt + C
+Toggle exact matches	Alt + W
+Find next	Enter
+
+
+
+Project vs Workspaces
+==============
+
+http://docs.sublimetext.info/en/latest/file_management/projects.html#creating-a-project
+
+Workspaces
+Workspaces hold session data associated with a project, which includes information about the opened files, pane layout, find history and more. A project can have multiple workspaces.
+
+A common use case for workspaces is to work on different features within the same project, where each feature requires a different set of files to be open, and you want to switch between features quickly. In this case you’ll want to have a second workspace available. Writing tests could be an example for this.
+
+Workspaces behave very much like projects. To create a new workspace, select Project → New Workspace for Project. To save the active workspace, select Project → Save Workspace As....
+
+The workspace metadata is stored in JSON files with the .sublime-workspace extension, which you are not supposed to edit.
+
+To switch between different workspaces, use Ctrl+Alt+P, exactly as you do with projects.
+
+As with projects, you can open a workspace from the command line by passing the desired .sublime-workspace file as an argument to the subl command line helper included with Sublime Text.
+
+Caution
+
+Unlike .sublime-project files, .sublime-workspace files are not meant to be shared or edited manually. You should never commit .sublime-workspace files into a source code repository. They may contain sensitive information.
+
+
+Location of Packages:
+======
+
+http://docs.sublimetext.info/en/latest/extensibility/packages.html#overview
+
+There are three locations for storing packages for different purposes.
+
+1)
+Packages can be folders under Data/Packages (short: Packages)
+
+2)
+or zip archives with the .sublime-package extension located under Data/Installed Packages (short: Installed Packages) or any of its subdirectories.
+
+
+3)
+Additionally, Sublime Text provides a set of default packages as zip archives in Application/Packages (short: Shipped Packages), where Application refers to the folder where the Sublime Text executable resides.
+
+This folder is not intended to be modified by the user.
+
+Package Content:
+============
+Package Contents
+Typical resources found in packages include:
+
+build systems (.sublime-build)
+color schemes (.tmTheme)
+key maps (.sublime-keymap)
+macros (.sublime-macro)
+menus (.sublime-menu)
+metadata (.tmPreferences)
+mouse maps (.sublime-mousemap)
+plugins (.py)
+settings (.sublime-settings)
+snippets (.sublime-snippet)
+syntax definitions (.tmLanguage)
+themes (.sublime-theme)
+Some packages may hold support files for other packages or for core features. For example, the spell checker uses Installed Packages/Language - English.sublime-package as a data store for English dictionaries.
+
+
+Types of Packages
+============
+In this guide, we categorize packages for clarity when discussing this topic, but Sublime Text doesn’t use this terminology and you don’t need to learn it.
+
+1)
+shipped packages
+default packages
+A set of packages that Sublime Text ships with. Some of these packages are core packages, while others enhance Sublime Text to support common programming languages out of the box.
+
+Examples: Default, Python, Java, C++, Markdown.
+
+Located in Shipped Packages.
+
+2)
+core packages
+Sublime Text requires these packages in order to function properly.
+
+Complete list: Default, Theme - Default, Color Scheme - Default, Text, Language - English.
+
+They are part of the shipped packages and located in Shipped Packages.
+
+3)
+user packages
+Installed or created by the user to extend Sublime Text’s functionality. They are not part of Sublime Text, and are always contributed by users or third parties.
+
+Example: User.
+
+Located in Packages and Installed Packages
+
+4)
+installed packages
+A subtype of user packages.
+
+Installed packages are .sublime-package archives and usually maintained by a package manager.
+
+Located in Installed Packages.
+
+5)
+override packages
+A special type of user packages.
+
+Override packages serve the purpose of customizing packages that are distributed as .sublime-package files. They are effectively injected into the original package and do not stand-alone.
+
+See Customizing or Overriding Packages for details.
+
+Located in Packages.
+
+
+Managing PAckages
+=============
+
+Installing Packages
+-------------------
+Packages can be installed in two main ways:
+
+The de facto package manager for Sublime Text is Package Control. 
+or
+by copying Sublime Text resources to a folder under Packages, or
+or
+by copying a .sublime-package file to Installed Packages.
+
+
+
+Disabling Packages
+-------------------
+To temporarily disable packages, you can add them to the ignored_packages list in your Packages/User/Preferences.sublime-settings file. Packages will be loaded or unloaded as needed when the settings file is saved.
+(D:\toolbox\Sublime Text Build 3143 x64\Data\Packages\User)
+
+Enabling Packages
+-------------------
+To re-enable a package, remove the package’s name from the ignored_packages list in your Packages/User/Preferences.sublime-settings file.
+
+Remove Package
+-------------------
+If you installed a package with a package manager, remove it using the method provided by the package manager.
+
+If you installed a package manually, follow this procedure to safely remove a package:
+
+Disable the package while Sublime Text is running.
+Close Sublime Text.
+Remove the package’s resources from the disk.
+Remove the package’s name from the ignored_packages list.
+
+
+KeyBindings
+=======
+
+http://docs.sublimetext.info/en/latest/reference/key_bindings.html
+
+Key Bindings
+-----------------------------
+Key bindings map key presses to commands.
+
+File Format
+-----------------------------
+Key bindings are stored in .sublime-keymap files and defined in JSON. Keymap files may be located anywhere in a package.
+
+Naming Keymap Files
+-----------------------------
+Any keymap named Default.sublime-keymap will always be applied in all platforms.
+
+Additionally, each platform can optionally have its own keymap:
+
+Default (Windows).sublime-keymap
+Default (OSX).sublime-keymap
+Default (Linux).sublime-keymap
+Sublime Text will ignore any .sublime-keymap file whose name doesn’t follow the patterns just described.
+
+
+
+Structure of a Key Binding
+-----------------------------
+Keymaps are arrays of key bindings. These are all valid elements in a key binding:
+
+keys
+An array of case-sensitive keys. Modifiers can be specified with the + sign. You can build chords by adding elements to the array (for example, ["ctrl+k","ctrl+j"]). Ambiguous chords are resolved with a timeout.
+
+command
+Name of the command to be executed.
+
+args
+Dictionary of arguments to be passed to command. Keys must be names of parameters to command.
+
+context
+Array of conditions that determine a particular context. All conditions must evaluate to true for the context to be active. See Structure of a Context below for more information.
+
+Here’s an example:
+
+{ "keys": ["shift+enter"], "command": "insert_snippet", "args": {"contents": "\n\t$0\n"}, "context":
+   [
+      { "key": "setting.auto_indent", "operator": "equal", "operand": true },
+      { "key": "selection_empty", "operator": "equal", "operand": true, "match_all": true },
+      { "key": "preceding_text", "operator": "regex_contains", "operand": "\\{$", "match_all": true },
+      { "key": "following_text", "operator": "regex_contains", "operand": "^\\}", "match_all": true }
+   ]
+}
+
+Structure of a Context
+-------------------------
+
+key
+Name of the context whose value you want to query.
+
+operator
+Type of test to perform against key‘s value. Defaults to equal.
+
+operand
+The result returned by key is tested against this value.
+
+match_all
+Requires the test to succeed for all selections. Defaults to false.

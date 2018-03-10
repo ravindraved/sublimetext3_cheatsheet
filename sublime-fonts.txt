@@ -1,0 +1,37 @@
+Gotp=> [Preferences->Settings]
+Fonts:
+
+Verdana 
+
+Arial
+Arial Rounded MT Bold
+*Arial Unicode MS
+
+Book Antiqua
+*Bookman Old Style
+
+Calibri (font size -12)
+Calibri Light
+
+Comic Sans MS
+
+Courier New
+
+*Dubai
+
+*Ebrima
+
+Eras Denim ITC
+
+Leelawadee UI
+
+Lucida Console
+
+MS Reference Sans Serif
+
+Segoe Print
+
+Trebuchet MS
+
+
+*Verdana
